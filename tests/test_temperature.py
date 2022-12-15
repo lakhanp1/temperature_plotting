@@ -38,6 +38,9 @@ def test_create_name():
     fname = tpl.create_name(None)
     assert fname == None
     
+    fname = tpl.create_name(456)
+    assert fname == "plot_123.png"
+    
 test_create_name()
 
 
