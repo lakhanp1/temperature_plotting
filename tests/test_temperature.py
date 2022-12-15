@@ -27,6 +27,12 @@ test_compute_mean()
 
 # In[3]:
 
+@pytest.mark.skip(reason="Test is bad")
+def test_create_name_bad():  
+    fname = tpl.create_name(456)
+    assert fname == "plot_123.png"
+
+test_create_name_bad()
 
 def test_create_name():
     fname = tpl.create_name(123)
@@ -37,9 +43,7 @@ def test_create_name():
     
     fname = tpl.create_name(None)
     assert fname == None
-    
-    fname = tpl.create_name(456)
-    assert fname == "plot_123.png"
+
     
 test_create_name()
 
