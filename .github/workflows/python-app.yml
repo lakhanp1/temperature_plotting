@@ -11,18 +11,24 @@ on:
 
 permissions:
   contents: read
+    
 
 jobs:
   tests:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python-version: ['3.9', '3.10']
+      fail-fast: false # this will force to run all of the combinations despite errors in one of them
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10
+    - name: Set up ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
-        python-version: "3.10"
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       shell: bash
       run: |
