@@ -20,9 +20,6 @@ def test_compute_mean():
         
     calc = tpl.compute_mean([])
     assert calc == None
-    
-     
-test_compute_mean()
 
 
 @pytest.mark.skip(reason="Test is bad")
@@ -30,7 +27,7 @@ def test_create_name_bad():
     fname = tpl.create_name(456)
     assert fname == "plot_123.png"
 
-test_create_name_bad()
+
 
 def test_create_name():
     fname = tpl.create_name(123)
@@ -42,8 +39,6 @@ def test_create_name():
     fname = tpl.create_name(None)
     assert fname == None
 
-    
-test_create_name()
 
 
 # integration test
@@ -51,5 +46,4 @@ def test_main():
     tpl.main()
     assert os.path.exists("plot_25.png")
 
-test_main()
 
