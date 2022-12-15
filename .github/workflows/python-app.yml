@@ -14,18 +14,18 @@ permissions:
     
 
 jobs:
-  tests:
+  test:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest]
         python-version: ['3.9', '3.10']
-      fail-fast: false # this will force to run all of the combinations despite errors in one of them
+      fail-fast: false
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up ${{ matrix.python-version }}
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
@@ -33,13 +33,12 @@ jobs:
       shell: bash
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
+        pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
         pytest
-    - name: Build documentation
-    
+  
   docs:
     runs-on: ubuntu-latest
     
