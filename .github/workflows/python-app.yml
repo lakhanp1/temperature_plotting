@@ -17,10 +17,8 @@ jobs:
   tests:
     strategy:
       matrix:
-#         os: [windows-latest, ubuntu-latest]
-        os: [ubuntu-latest]
-#         python-version: ['3.9', '3.10']
-        python-version: ['3.10']
+        os: [windows-latest, ubuntu-latest]
+        python-version: ['3.9', '3.10']
       fail-fast: false # this will force to run all of the combinations despite errors in one of them
 
     runs-on: ${{ matrix.os }}
